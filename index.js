@@ -35,20 +35,9 @@ app.use('/graphql', graphqlHTTP({
 
 // middleware to handle erros
 app.use((err, req, res) => {
-  console.error(err);
   res.status(500).send('Something went wrong...');
 });
 
 app.listen(port, () => {
   console.log(`Server OK: http://localhost:${port}`);
 });
-
-/*exports.listen = function (p) {
-  console.log(`Server OK: http://localhost:${p}`);
-  app.listen(p);
-};
-
-// close destroys the server.
-exports.close = function () {
-	app.close();
-};*/

@@ -7,6 +7,7 @@ const passportJWT = require('passport-jwt');
 const jwt = require('jsonwebtoken');
 const { jwtOptions } = require('../config');
 const { UserModel } = require('../database/database');
+const graphql = require('../graphql/graphql');
 
 const router = express.Router();
 const LocalStrategy = passportLocal.Strategy;
@@ -56,9 +57,17 @@ passport.use(new JWTStrategy(
 
 router.post('/login', passport.authenticate('local', { session: false }), (req, res) => {
   // here, user exists => returned value from passport verification function
-  const user = req.user;
+  const { password, ...user } = req.user; // remove password from the const 'user'
   const token = jwt.sign({ userId: user.id }, jwtOptions.secret);
   res.send({ user, token });
+});
+
+router.post('/register', (req, res) => {
+  const { username, password } = req.body;
+
+  // user registration
+
+  res.status(201);
 });
 
 module.exports = { router };
