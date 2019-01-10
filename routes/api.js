@@ -1,11 +1,15 @@
 const express = require('express');
 const passport = require('passport');
+const graphql = require('../graphql/graphql');
 
 const router = express.Router();
 const authenticated = () => passport.authenticate('jwt', { session: false });
 
 router.get('/movies', (req, res) => {
-  res.send({ message: 'mooooovies' });
+  // graphql function getAllMovies()
+  graphql.getAllMovies().then((data) => {
+    res.send(data);
+  });
 });
 
 router.get('/me', authenticated(), (req, res) => {
