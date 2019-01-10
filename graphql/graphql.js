@@ -89,7 +89,11 @@ const root = {
       });
   }),
   addMovieToWatchlist: ({ username, movieTitle }) => Promise((resolve) => {
-    UserModel.update({ username: username }, { $addToSet: { watchlist: movieTitle } })
+    const promises = [];
+    promises.push(
+      UserModel.update({ username: username }, { $addToSet: { watchlist: movieTitle } }),
+    );
+    Promise.all(promises)
       .then((res) => {
         resolve(res);
       })

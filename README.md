@@ -12,6 +12,10 @@ J'ai choisi d'implémenter la partie `backend`.
 
 
 
+**Serveur**: https://tweb-te2-server.herokuapp.com/graphql
+
+**Client** (uniqument login): https://tweb-te2-client.herokuapp.com/
+
 ## Serveur (Backend)
 
 database importée: 
@@ -20,7 +24,9 @@ database importée:
 
 
 
-Créer un utilisateur: http://localhost:5000/graphql
+Créer un utilisateur: 
+
+http://localhost:5000/graphql(Si serveur démarré en local), ou sinon https://tweb-te2-server.herokuapp.com/graphql	
 
 query: 
 
@@ -44,5 +50,5 @@ J'ai un mini client avec uniquement un processus d'authentification et des tests
 
 Repo client: https://github.com/mathieujee/TWEB_TE2_Client
 
-
+**Heroku**: https://tweb-te2-client.herokuapp.com/
 
